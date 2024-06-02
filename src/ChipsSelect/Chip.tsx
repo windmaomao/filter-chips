@@ -3,12 +3,13 @@ import styles from './Chip.module.css';
 
 interface ChipProps {
   item: ItemType;
+  onRemove: () => void;
 }
 
-function Chip({ item }: ChipProps) {
+function Chip({ item, onRemove }: ChipProps) {
   return (
     <div className={styles.chip}>
-      <button>{item.action}</button>
+      <button onClick={onRemove}>{item.action}</button>
     </div>
   );
 }

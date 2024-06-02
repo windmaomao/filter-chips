@@ -4,5 +4,6 @@ export interface ItemType {
   id: string;
   filter: FilterType;
   caption?: string;
+  op?: string;
   value?: string;
 }

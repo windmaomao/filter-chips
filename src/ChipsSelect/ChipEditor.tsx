@@ -4,29 +4,50 @@ import styles from './ChipEditor.module.css';
 interface ChipEditorProps {
   item: ItemType;
   onEdit: () => void;
+  onRemove: () => void;
 }
 
 export default function ChipEditor({
   item,
   onEdit,
+  onRemove,
 }: ChipEditorProps) {
-  const { value } = item;
+  const {
+    value,
+    op,
+    filter: { ops },
+  } = item;
 
-  const onChange = (e: any) => {
-    item.value = e.target.value;
+  const onChange = (name: string) => (e: any) => {
+    Object.assign(item, { [name]: e.target.value });
     onEdit();
   };
 
   return (
     <div className={styles.editor}>
-      <p>
+      <div className={styles.delete} onClick={onRemove}>
+        Delete
+      </div>
+      <div>
         <label>Operator</label>
-        <input />
-      </p>
-      <p>
+        <div>
+          <select
+            name="ops"
+            value={op}
+            onChange={onChange('op')}
+          >
+            {ops.map(o => (
+              <option value={o} key={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div>
         <label>Value</label>
-        <input value={value} onChange={onChange} />
-      </p>
+        <input value={value} onChange={onChange('value')} />
+      </div>
     </div>
   );
 }

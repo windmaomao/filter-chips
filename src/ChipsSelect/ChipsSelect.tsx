@@ -11,6 +11,8 @@ const newItem = (filter: FilterType) => ({
   id: `${filter.id}-${counter++}`,
   caption: `${filter.id}`,
   filter,
+  op: filter.ops[0],
+  value: '',
 });
 
 interface ChipsSelectProps {

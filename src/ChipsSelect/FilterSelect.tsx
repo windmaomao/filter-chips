@@ -9,9 +9,14 @@ interface FilterSelectProps {
 }
 
 function FilterSelect({
-  filters,
+  filters: rawFilters,
   onFilterSelect,
 }: FilterSelectProps) {
+  const [value, setValue] = useState('')
+  const onChange = (e: any) => {
+    setValue(e.target.value)
+  }
+
   const [suggestOn, setSuggestOn] = useState(false);
   const onFocus = () => {
     setSuggestOn(true);
@@ -19,11 +24,14 @@ function FilterSelect({
   const onSelect = (f: FilterType) => {
     setSuggestOn(false);
     onFilterSelect(f);
+    setValue('')
   };
 
+  const filters = rawFilters.filter(f => f.id.includes(value))
+ 
   return (
     <div className={styles.container}>
-      <input placeholder="add filter" onFocus={onFocus} />
+      <input placeholder="add filter" onFocus={onFocus} value={value} onChange={onChange} />
       {suggestOn && (
         <FilterSuggestions
           filters={filters}

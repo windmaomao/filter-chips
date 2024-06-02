@@ -1,5 +1,6 @@
 import styles from './App.module.css';
 import design from './design.jpg';
+import Toolbar from './Toolbar';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         alt="Design"
         width="100%"
       />
-      <div>blahblahbalh</div>
+      <Toolbar />
     </div>
   );
 }

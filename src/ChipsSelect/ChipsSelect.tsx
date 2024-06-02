@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Chip from './Chip';
 import FilterSelect from './FilterSelect';
-import type { ItemType } from './ChipsSelect.type';
+import type { ItemType } from './Items.type';
 import type { FilterType } from './Filters.type';
 import styles from './ChipsSelect.module.css';
 
 const mockItems: ItemType[] = [];
 let counter = 111;
-const newItem = (f: FilterType) => ({
-  id: `${f.id}-${counter++}`,
-  caption: `${f.id}`,
+const newItem = (filter: FilterType) => ({
+  id: `${filter.id}-${counter++}`,
+  caption: `${filter.id}`,
+  filter 
 });
 
 interface ChipsSelectProps {
@@ -24,6 +25,10 @@ function ChipsSelect({ filters }: ChipsSelectProps) {
   const onChipRemove = (item: ItemType) => () => {
     setItems(items.filter(i => i !== item));
   };
+  const onChipChange = (item: ItemType) => () => {
+    // TODO: make sure it can be changed properly
+    setItems([...items])
+  }
 
   return (
     <div className={styles.container}>
@@ -33,6 +38,7 @@ function ChipsSelect({ filters }: ChipsSelectProps) {
           key={item.id}
           item={item}
           onRemove={onChipRemove(item)}
+          onChange={onChipChange(item)}
         />
       ))}
       <FilterSelect

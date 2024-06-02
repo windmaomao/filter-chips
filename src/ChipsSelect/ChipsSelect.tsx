@@ -1,20 +1,27 @@
 import Chip from './Chip';
-import Input from './Input';
+import FilterSelect from './FilterSelect';
 import type { ItemType } from './ChipsSelect.type';
+import type { FilterType } from './Filters.type';
 import styles from './ChipsSelect.module.css';
 
 interface ChipsSelectProps {
+  filters: FilterType[];
   items: ItemType[];
 }
 
-function ChipsSelect({ items }: ChipsSelectProps) {
+function ChipsSelect({ items, filters }: ChipsSelectProps) {
+  const onFilterSelect = (f: FilterType) => {};
+
   return (
     <div className={styles.container}>
       <div className={styles.label}>Filter:</div>
       {items.map(item => (
         <Chip key={item.action} item={item} />
       ))}
-      <Input />
+      <FilterSelect
+        filters={filters}
+        onSelect={onFilterSelect}
+      />
     </div>
   );
 }

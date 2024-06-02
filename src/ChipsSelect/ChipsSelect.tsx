@@ -10,7 +10,7 @@ let counter = 111;
 const newItem = (filter: FilterType) => ({
   id: `${filter.id}-${counter++}`,
   caption: `${filter.id}`,
-  filter 
+  filter,
 });
 
 interface ChipsSelectProps {
@@ -26,9 +26,8 @@ function ChipsSelect({ filters }: ChipsSelectProps) {
     setItems(items.filter(i => i !== item));
   };
   const onChipChange = (item: ItemType) => () => {
-    // TODO: make sure it can be changed properly
-    setItems([...items])
-  }
+    setItems([...items]);
+  };
 
   return (
     <div className={styles.container}>

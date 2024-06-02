@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import useClickoutside from './useClickoutside';
+import ChipEditor from './ChipEditor';
 import type { ItemType } from './Items.type';
 import styles from './Chip.module.css';
 
@@ -10,31 +11,27 @@ interface ChipProps {
 }
 
 function Chip({ item, onRemove, onChange }: ChipProps) {
-  const [edit, setEdit] = useState(false);
+  const [editOn, setEditOn] = useState(false);
   const onToggle = () => {
-    setEdit(!edit);
+    setEditOn(!editOn);
   };
 
   const ref = useRef<HTMLDivElement>(null);
   useClickoutside(ref, () => {
-    setEdit(false);
+    setEditOn(false);
   });
+
+  const onEdit = () => {
+    onChange(item);
+  };
 
   return (
     <div ref={ref} className={styles.chip}>
-      <button onClick={onToggle}>{item.caption}</button>
-      {edit && (
-        <div className={styles.edit}>
-          <p>
-            <label>Operator</label>
-            <input />
-          </p>
-          <p>
-            <label>Value</label>
-            <input />
-          </p>
-        </div>
-      )}
+      <button onClick={onToggle}>
+        {item.caption}
+        {item.value}
+      </button>
+      {editOn && <ChipEditor item={item} onEdit={onEdit} />}
     </div>
   );
 }

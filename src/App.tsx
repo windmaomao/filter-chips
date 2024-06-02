@@ -6,6 +6,7 @@ function App() {
     <div className={styles.app}>
       <h1>Filters Demo</h1>
       <Toolbar />
+      <p>A multi-chips select widget</p>
     </div>
   );
 }

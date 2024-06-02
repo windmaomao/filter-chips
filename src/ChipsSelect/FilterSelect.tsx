@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { FilterType } from './Filters.type';
-import styles from './FilterSelect.module.css';
 import FilterSuggestions from './FilterSuggestions';
+import useClickoutside from './useClickoutside';
+import styles from './FilterSelect.module.css';
 
 interface FilterSelectProps {
   filters: FilterType[];
@@ -29,8 +30,13 @@ function FilterSelect({
 
   const filters = rawFilters.filter(f => f.id.includes(value))
  
+  const ref = useRef<HTMLDivElement>(null)
+  useClickoutside(ref, () => {
+    setSuggestOn(false)
+  })
+
   return (
-    <div className={styles.container}>
+    <div ref={ref} className={styles.container}>
       <input placeholder="add filter" onFocus={onFocus} value={value} onChange={onChange} />
       {suggestOn && (
         <FilterSuggestions

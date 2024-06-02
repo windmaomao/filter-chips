@@ -1,2 +1,14 @@
 .container {
+  background-color: var(--bg-color);
+  max-width: 500px;
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+}
+
+.label {
+  padding: 5px 10px;
+  background-color: #c5c2c2;
+  display: flex;
+  align-items: center;
 }

@@ -1,11 +1,20 @@
+import Chip from './Chip';
+import Input from './Input';
+import type { ItemType } from './ChipsSelect.type';
 import styles from './ChipsSelect.module.css';
 
-function ChipsSelect() {
+interface ChipsSelectProps {
+  items: ItemType[];
+}
+
+function ChipsSelect({ items }: ChipsSelectProps) {
   return (
     <div className={styles.container}>
-      <div className="input">
-        <input placeholder="add filter" />
-      </div>
+      <div className={styles.label}>Filter:</div>
+      {items.map(item => (
+        <Chip key={item.action} item={item} />
+      ))}
+      <Input />
     </div>
   );
 }

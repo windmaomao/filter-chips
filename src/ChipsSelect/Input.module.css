@@ -1,0 +1,12 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.container input {
+  outline: none;
+  border: transparent;
+  font-size: 14px;
+  width: 100%;
+}

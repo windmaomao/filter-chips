@@ -1,0 +1,10 @@
+.chip {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.chip button {
+  cursor: pointer;
+  height: 2rem;
+}

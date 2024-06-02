@@ -1,17 +1,18 @@
 import { FilterType } from './Filters.type';
 
-const ops = ['=', '>', '<'];
+const numOps = ['=', '>', '<'];
+const textOps = ['=', 'starts'];
 const filters: FilterType[] = [
-  { id: 'name', ops },
-  { id: 'status', ops },
-  { id: 'date', ops },
-  { id: 'min', ops },
-  { id: 'max', ops },
-  { id: 'space', ops },
-  { id: 'language', ops },
-  { id: 'color', ops },
-  { id: 'first', ops },
-  { id: 'last', ops },
+  { id: 'name', ops: textOps },
+  { id: 'status', ops: textOps },
+  { id: 'date', ops: numOps },
+  { id: 'min', ops: numOps },
+  { id: 'max', ops: numOps },
+  { id: 'space', ops: textOps },
+  { id: 'language', ops: textOps },
+  { id: 'color', ops: textOps },
+  { id: 'first', ops: textOps },
+  { id: 'last', ops: textOps },
 ];
 
 export default filters;

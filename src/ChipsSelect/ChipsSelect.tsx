@@ -31,6 +31,9 @@ function ChipsSelect({ filters }: ChipsSelectProps) {
     setItems([...items]);
   };
 
+  const info = JSON.stringify(items);
+  // console.log(info);
+
   return (
     <div className={styles.container}>
       <div className={styles.label}>Filter:</div>

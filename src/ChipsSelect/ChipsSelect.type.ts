@@ -1,6 +1,7 @@
 import type { FilterType } from './Filters.type';
 
 export interface ItemType {
-  action: string;
+  id: string;
+  caption: string;
   filter?: FilterType;
 }

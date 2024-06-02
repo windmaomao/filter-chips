@@ -5,7 +5,12 @@ import type { ItemType } from './ChipsSelect.type';
 import type { FilterType } from './Filters.type';
 import styles from './ChipsSelect.module.css';
 
-const mockItems: ItemType[] = [{ action: 'others' }];
+const mockItems: ItemType[] = [];
+let counter = 111;
+const newItem = (f: FilterType) => ({
+  id: `${f.id}-${counter++}`,
+  caption: `${f.id}`,
+});
 
 interface ChipsSelectProps {
   filters: FilterType[];
@@ -14,7 +19,7 @@ interface ChipsSelectProps {
 function ChipsSelect({ filters }: ChipsSelectProps) {
   const [items, setItems] = useState(mockItems);
   const onFilterSelect = (f: FilterType) => {
-    setItems([...items, { action: f.id }]);
+    setItems([...items, newItem(f)]);
   };
   const onChipRemove = (item: ItemType) => () => {
     setItems(items.filter(i => i !== item));
@@ -25,7 +30,7 @@ function ChipsSelect({ filters }: ChipsSelectProps) {
       <div className={styles.label}>Filter:</div>
       {items.map(item => (
         <Chip
-          key={item.action}
+          key={item.id}
           item={item}
           onRemove={onChipRemove(item)}
         />

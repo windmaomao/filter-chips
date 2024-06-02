@@ -9,7 +9,7 @@ interface ChipProps {
 function Chip({ item, onRemove }: ChipProps) {
   return (
     <div className={styles.chip}>
-      <button onClick={onRemove}>{item.action}</button>
+      <button onClick={onRemove}>{item.caption}</button>
     </div>
   );
 }

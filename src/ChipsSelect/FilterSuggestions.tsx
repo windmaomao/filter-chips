@@ -13,6 +13,11 @@ function FilterSuggestions({
   const onClick = (f: FilterType) => () => {
     onSelect(f);
   };
+  const onKeyDown = (f: FilterType) => (e: any) => {
+    if (e.key === 'Enter') {
+      onSelect(f);
+    }
+  };
 
   return (
     <div className={styles.popover}>
@@ -21,6 +26,8 @@ function FilterSuggestions({
           key={f.id}
           className={styles.item}
           onClick={onClick(f)}
+          tabIndex={0}
+          onKeyDown={onKeyDown(f)}
         >
           {f.id}
         </div>

@@ -27,9 +27,14 @@ function Chip({ item, onRemove, onChange }: ChipProps) {
 
   return (
     <div ref={ref} className={styles.chip}>
-      <button onClick={onToggle}>
-        {item.caption}.{item.op}.{item.value}
-      </button>
+      <div className={styles.label} onClick={onToggle}>
+        <span className={styles.caption}>
+          {item.caption}
+        </span>
+        <span className={styles.op}>{item.op}</span>
+        <span className={styles.value}>{item.value}</span>
+        <span className={styles.delete}>x</span>
+      </div>
       {editOn && (
         <ChipEditor
           item={item}

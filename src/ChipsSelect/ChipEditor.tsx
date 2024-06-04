@@ -26,7 +26,7 @@ export default function ChipEditor({
   return (
     <div className={styles.editor}>
       <div className={styles.delete} onClick={onRemove}>
-        x
+        close
       </div>
       <div>
         <label>Operator</label>

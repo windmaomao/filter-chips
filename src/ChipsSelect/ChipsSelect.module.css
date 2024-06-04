@@ -13,3 +13,9 @@
   display: flex;
   align-items: center;
 }
+
+.chips {
+  display: flex;
+  padding: 3px 1px;
+  gap: 2px;
+}

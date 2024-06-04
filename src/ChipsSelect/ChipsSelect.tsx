@@ -37,14 +37,16 @@ function ChipsSelect({ filters }: ChipsSelectProps) {
   return (
     <div className={styles.container}>
       <div className={styles.label}>Filter:</div>
-      {items.map(item => (
-        <Chip
-          key={item.id}
-          item={item}
-          onRemove={onChipRemove(item)}
-          onChange={onChipChange(item)}
-        />
-      ))}
+      <div className={styles.chips}>
+        {items.map(item => (
+          <Chip
+            key={item.id}
+            item={item}
+            onRemove={onChipRemove(item)}
+            onChange={onChipChange(item)}
+          />
+        ))}
+      </div>
       <FilterSelect
         filters={filters}
         onFilterSelect={onFilterSelect}

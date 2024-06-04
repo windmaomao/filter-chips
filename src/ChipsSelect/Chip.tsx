@@ -33,13 +33,15 @@ function Chip({ item, onRemove, onChange }: ChipProps) {
         </span>
         <span className={styles.op}>{item.op}</span>
         <span className={styles.value}>{item.value}</span>
-        <span className={styles.delete}>x</span>
+        <span className={styles.delete} onClick={onRemove}>
+          x
+        </span>
       </div>
       {editOn && (
         <ChipEditor
           item={item}
           onEdit={onEdit}
-          onRemove={onRemove}
+          onDismiss={onToggle}
         />
       )}
     </div>

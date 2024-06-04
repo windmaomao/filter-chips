@@ -4,13 +4,13 @@ import styles from './ChipEditor.module.css';
 interface ChipEditorProps {
   item: ItemType;
   onEdit: () => void;
-  onRemove: () => void;
+  onDismiss: () => void;
 }
 
 export default function ChipEditor({
   item,
   onEdit,
-  onRemove,
+  onDismiss,
 }: ChipEditorProps) {
   const {
     value,
@@ -25,7 +25,7 @@ export default function ChipEditor({
 
   return (
     <div className={styles.editor}>
-      <div className={styles.delete} onClick={onRemove}>
+      <div className={styles.delete} onClick={onDismiss}>
         close
       </div>
       <div>

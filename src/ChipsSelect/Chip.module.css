@@ -1,11 +1,52 @@
 .chip {
   position: relative;
+  background-color: rgb(236, 234, 234);
+  cursor: pointer;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
   display: flex;
-  align-items: center;
-  padding: 2px;
+  align-items: stretch;
 }
 
-.chip button {
-  cursor: pointer;
-  height: 2rem;
+.label {
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  font-size: 12px;
+}
+
+.caption {
+  padding: 5px 0 0 3px;
+}
+.caption:hover {
+  background-color: rgb(187, 186, 186);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.value {
+  padding: 5px 0;
+}
+
+.op {
+  padding: 5px 0;
+  font-weight: bold;
+}
+
+.value:hover,
+.op:hover {
+  background-color: rgb(187, 186, 186);
+}
+
+.delete {
+  border-left: 1px solid lightgrey;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: rgb(144, 143, 143);
+  font-weight: bold;
+  padding: 4px 2px;
+}
+
+.delete:hover {
+  background-color: rgb(187, 186, 186);
 }

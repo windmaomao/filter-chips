@@ -27,11 +27,8 @@ const filters: FilterType[] = [
 ```
 
 ## Design notes
+
 - A multi-chips select widget overall;
 - An auto-suggestion input box to the right, we’ll make the chips select and the auto-suggestion box part of the same widget through smart UI touch up; a popover that provides suggestion so we can create the right chip;
 - Chip component, a button like item with a popover that provides grannual level control in terms of what can be filtered for that item;
-- Prototype: https://codepen.io/windmaomao/pen/zYQZqXp . You can add a chip by selecting one of the items, and you can remove a chip by simply clicking on the chip. 
-
-TODO:
-
-- add keyboard support
+- Prototype: https://codepen.io/windmaomao/pen/zYQZqXp . You can add a chip by selecting one of the items, and you can remove a chip by simply clicking on the chip.

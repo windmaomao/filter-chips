@@ -13,31 +13,38 @@ function FilterSelect({
   filters: rawFilters,
   onFilterSelect,
 }: FilterSelectProps) {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
   const onChange = (e: any) => {
-    setValue(e.target.value)
-  }
+    setValue(e.target.value);
+  };
 
   const [suggestOn, setSuggestOn] = useState(false);
   const onFocus = () => {
     setSuggestOn(true);
   };
   const onSelect = (f: FilterType) => {
-    setSuggestOn(false);
+    // setSuggestOn(false);
     onFilterSelect(f);
-    setValue('')
+    setValue('');
   };
 
-  const filters = rawFilters.filter(f => f.id.includes(value))
- 
-  const ref = useRef<HTMLDivElement>(null)
+  const filters = rawFilters.filter(f =>
+    f.id.includes(value),
+  );
+
+  const ref = useRef<HTMLDivElement>(null);
   useClickoutside(ref, () => {
-    setSuggestOn(false)
-  })
+    setSuggestOn(false);
+  });
 
   return (
     <div ref={ref} className={styles.container}>
-      <input placeholder="add filter" onFocus={onFocus} value={value} onChange={onChange} />
+      <input
+        placeholder="add filter"
+        onFocus={onFocus}
+        value={value}
+        onChange={onChange}
+      />
       {suggestOn && (
         <FilterSuggestions
           filters={filters}
